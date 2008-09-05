@@ -3,50 +3,25 @@ package Pod::POM::View::Confluence;
 use warnings;
 use strict;
 
-=head1 NAME
-
-Pod::POM::View::Confluence - The great new Pod::POM::View::Confluence!
-
-=head1 VERSION
-
-Version 0.01
-
-=cut
-
 our $VERSION = '0.01';
 
+1;
+
+__END__
+
+=head1 NAME
+
+Pod::POM::View::Confluence - Confluence view of a Pod Object Model
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
     use Pod::POM::View::Confluence;
+    my $view = 'Pod::POM::View::Confluence';
 
-    my $foo = Pod::POM::View::Confluence->new();
-    ...
+    $pom->present($view);
 
-=head1 EXPORT
+=head1 DESCRIPTION
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
-=head1 FUNCTIONS
-
-=head2 function1
-
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
@@ -57,8 +32,6 @@ Philippe Bruhat (BooK), C<< <book at cpan.org> >>
 Please report any bugs or feature requests to C<bug-pod-pom-view-confluence at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Pod-POM-View-Confluence>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
 
 
 =head1 SUPPORT
@@ -91,17 +64,14 @@ L<http://search.cpan.org/dist/Pod-POM-View-Confluence>
 =back
 
 
-=head1 ACKNOWLEDGEMENTS
-
-
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT
 
 Copyright 2008 Philippe Bruhat (BooK), all rights reserved.
+
+=head1 LICENSE
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
-
 =cut
 
-1; # End of Pod::POM::View::Confluence
