@@ -22,6 +22,14 @@ Pod::POM::View::Confluence - Confluence view of a Pod Object Model
 
 =head1 DESCRIPTION
 
+I<Confluence> is an "entreprise wiki" published by Atlassian.
+Pages can be edited either in I<Rich Text> or I<Wiki Markup>.
+See L<http://www.atlassian.com/software/confluence/> for details.
+
+This module provides a view for C<Pod::POM> that outputs the
+information in the I<Confluence> I<Wiki Markup>.
+
+Use it like any other C<Pod::POM::View> subclass.
 
 =head1 AUTHOR
 
