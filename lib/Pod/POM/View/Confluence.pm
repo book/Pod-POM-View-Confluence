@@ -3,8 +3,180 @@ package Pod::POM::View::Confluence;
 use warnings;
 use strict;
 
-our $VERSION = '0.01';
+# most of the code below and until __END__
+# was lifted from Pod::POM::View::Text
 
+use Pod::POM::View;
+use base qw( Pod::POM::View );
+use vars qw( $VERSION $DEBUG $ERROR $AUTOLOAD $INDENT );
+use Text::Wrap;
+$VERSION = '0.01';
+$DEBUG   = 0 unless defined $DEBUG;
+$INDENT  = 0;
+
+
+sub new {
+    my $class = shift;
+    my $args  = ref $_[0] eq 'HASH' ? shift : { @_ };
+    bless { 
+	INDENT => 0,
+	%$args,
+    }, $class;
+}
+
+
+sub view {
+    my ($self, $type, $item) = @_;
+
+    if ($type =~ s/^seq_//) {
+	return $item;
+    }
+    elsif (UNIVERSAL::isa($item, 'HASH')) {
+	if (defined $item->{ content }) {
+	    return $item->{ content }->present($self);
+	}
+	elsif (defined $item->{ text }) {
+	    my $text = $item->{ text };
+	    return ref $text ? $text->present($self) : $text;
+	}
+	else {
+	    return '';
+	}
+    }
+    elsif (! ref $item) {
+	return $item;
+    }
+    else {
+	return '';
+    }
+}
+
+
+sub view_head1 {
+    my ($self, $head1) = @_;
+    my $title = $head1->title->present($self);
+    
+    my $output = "h1. $title\n" . $head1->content->present($self);
+    return $output;
+}
+
+
+sub view_head2 {
+    my ($self, $head2) = @_;
+    my $title = $head2->title->present($self);
+
+    my $output = "h2. $title\n" . $head2->content->present($self);
+
+    return $output;
+}
+
+
+sub view_head3 {
+    my ($self, $head3) = @_;
+    my $title = $head3->title->present($self);
+
+    my $output = "h3. $title\n" . $head3->content->present($self);
+
+    return $output;
+}
+
+
+sub view_head4 {
+    my ($self, $head4) = @_;
+    my $title = $head4->title->present($self);
+
+    my $output = "h4. $title\n" . $head4->content->present($self);
+
+    return $output;
+}
+
+
+sub view_item {
+    my ($self, $item) = @_;
+    my $indent = ref $self ? \$self->{ INDENT } : \$INDENT;
+    my $pad = '*' x $$indent;
+    my $title = $item->title->present($self);
+    $title =~ s/^\s*\*/'*'x($$indent+1)/e;
+    $$indent += 1;
+    my $content = $item->content->present($self);
+    $content =~ s/^\s+//;
+    $content =~ s/\n+/\n/g;
+    $$indent -= 1;
+    
+    return "$title $content\n";
+}
+
+
+sub view_for {
+    my ($self, $for) = @_;
+    return '' unless $for->format() =~ /\bwiki\b/;
+    return $for->text()
+	. "\n\n";
+}
+
+    
+sub view_begin {
+    my ($self, $begin) = @_;
+    return '' unless $begin->format() =~ /\bwiki\b/;
+    return $begin->content->present($self);
+}
+
+    
+sub view_textblock {
+    my ($self, $text) = @_;
+    $text =~ s/\s+/ /mg;
+
+    return $text . "\n\n";
+}
+
+
+sub view_verbatim {
+    my ($self, $text) = @_;
+    return "{noformat}\n$text\n{noformat}\n";
+}
+
+
+sub view_seq_bold {
+    my ($self, $text) = @_;
+    return "*$text*";
+}
+
+
+sub view_seq_italic {
+    my ($self, $text) = @_;
+    return "_${text}_";
+}
+
+
+sub view_seq_code {
+    my ($self, $text) = @_;
+    return "{{$text}}";
+}
+
+
+sub view_seq_file {
+    my ($self, $text) = @_;
+    return "_${text}_";
+}
+
+my $entities = {
+    gt   => '>',
+    lt   => '<',
+    amp  => '&',
+    quot => '"',
+};
+
+
+sub view_seq_entity {
+    my ($self, $entity) = @_;
+    return $entities->{ $entity } || $entity;
+}
+
+sub view_seq_link {
+    my ($self, $link) = @_;
+	return "[$link]";
+}
+	
 1;
 
 __END__
