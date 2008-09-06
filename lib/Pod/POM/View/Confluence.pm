@@ -103,6 +103,7 @@ sub view_item {
     $content =~ s/\n+/\n/g;
     $$indent -= 1;
     
+    $content =~ s/\n+\z//g;
     return "$title $content\n";
 }
 
