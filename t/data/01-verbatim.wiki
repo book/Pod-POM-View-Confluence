@@ -1,4 +1,4 @@
-﻿Some code:
+Some code:
 
 {noformat}
     @ARGV = ( '$c', map { ( $_, '$c.=pop;pop' ) } qw( + + A $ ) );
