@@ -189,7 +189,7 @@ Pod::POM::View::Confluence - Confluence view of a Pod Object Model
 
     use Pod::POM::View::Confluence;
     my $view = 'Pod::POM::View::Confluence';
-
+    
     $pom->present($view);
 
 =head1 DESCRIPTION
@@ -205,7 +205,7 @@ Use it like any other C<Pod::POM::View> subclass.
 
 =head1 AUTHOR
 
-Philippe Bruhat (BooK), C<< <book at cpan.org> >>
+Philippe Bruhat (BooK), C<< <book@cpan.org> >>
 
 =head1 BUGS
 
@@ -219,7 +219,6 @@ automatically be notified of progress on your bug as I make changes.
 You can find documentation for this module with the perldoc command.
 
     perldoc Pod::POM::View::Confluence
-
 
 You can also look for information at:
 
