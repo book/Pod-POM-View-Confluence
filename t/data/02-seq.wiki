@@ -1,3 +1,2 @@
 h1. Some formatting sequences
 Some X<> sequences: *bold*, _italics_, {{code}}, _file_.
-
