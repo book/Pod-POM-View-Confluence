@@ -111,15 +111,15 @@ sub view_item {
 
 sub view_for {
     my ($self, $for) = @_;
-    return '' unless $for->format() =~ /\bwiki\b/;
+    return '' unless $for->format() =~ /\bconfluence\b/;
     return $for->text()
-	. "\n\n";
+	. "\n";
 }
 
     
 sub view_begin {
     my ($self, $begin) = @_;
-    return '' unless $begin->format() =~ /\bwiki\b/;
+    return '' unless $begin->format() =~ /\bconfluence\b/;
     return $begin->content->present($self);
 }
 
@@ -204,6 +204,9 @@ This module provides a view for C<Pod::POM> that outputs the
 information in the I<Confluence> I<Wiki Markup>.
 
 Use it like any other C<Pod::POM::View> subclass.
+
+Note that C<=for> and C<=begin> / C<=end> block will not output anything,
+unless for format C<confluence>.
 
 =head1 AUTHOR
 
