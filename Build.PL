@@ -10,6 +10,9 @@ my $builder = Module::Build->new(
     build_requires => {
         'Test::More' => 0,
     },
+    requires => {
+        'Pod::POM' => 0.17,
+    },
     add_to_cleanup      => [ 'Pod-POM-View-Confluence-*' ],
     create_makefile_pl => 'traditional',
 );
