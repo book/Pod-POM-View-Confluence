@@ -97,6 +97,7 @@ sub view_item {
     my $pad = '*' x $$indent;
     my $title = $item->title->present($self);
     $title =~ s/^\s*\*/'*'x($$indent+1)/e;
+    $title =~ s/^\s*\d+/'#'x($$indent+1)/e;
     $$indent += 1;
     my $content = $item->content->present($self);
     $content =~ s/^\s+//;
