@@ -125,8 +125,8 @@ sub view_begin {
 sub view_textblock {
     my ($self, $text) = @_;
     $text =~ s/\s+/ /mg;
-
-    return $text . "\n\n";
+    $text =~ s/\s+\z//;
+    return $text . "\n";
 }
 
 
