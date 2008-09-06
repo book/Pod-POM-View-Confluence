@@ -14,7 +14,6 @@ my $builder = Module::Build->new(
         'Pod::POM' => 0.17,
     },
     add_to_cleanup      => [ 'Pod-POM-View-Confluence-*' ],
-    create_makefile_pl => 'traditional',
 );
 
 $builder->create_build_script();
