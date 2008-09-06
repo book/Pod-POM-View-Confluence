@@ -208,6 +208,23 @@ Use it like any other C<Pod::POM::View> subclass.
 Note that C<=for> and C<=begin> / C<=end> block will not output anything,
 unless for format C<confluence>.
 
+=head1 METHODS
+
+Apart from the C<view_*> methods (see L<Pod::POM> for details), this
+module supports the two following methods:
+
+=over 4
+
+=item new()
+
+Constructor.
+
+=item view( $type, $node )
+
+Return the given Pod::POM node as formatted by the View.
+
+=back
+
 =head1 AUTHOR
 
 Philippe Bruhat (BooK), C<< <book@cpan.org> >>
