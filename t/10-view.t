@@ -35,8 +35,12 @@ for my $file (@files) {
 
 # helper routine
 sub slurp {
+    my ($file) = @_;
     local $/;
-    open my $handle, '<', shift or return;
+    open my $handle, '<', $file or do {
+        diag "Can't open $file: $!";
+        return;
+    };
     return readline $handle;
 }
 
