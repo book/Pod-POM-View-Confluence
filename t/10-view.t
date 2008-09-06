@@ -30,7 +30,15 @@ for my $file (@files) {
     $expected = slurp($expected);
 
     # compare
-    is_same_string( $got, $expected, "Confluence output of $file" );
+    if ( $file =~ /TODO/ ) {
+    TODO: {
+            local $TODO = 'not fully implemented yet';
+            is_same_string( $got, $expected, "Confluence output of $file" );
+        }
+    }
+    else {
+        is_same_string( $got, $expected, "Confluence output of $file" );
+    }
 }
 
 # helper routine
