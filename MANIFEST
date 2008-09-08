@@ -3,6 +3,7 @@ Changes
 lib/Pod/POM/View/Confluence.pm
 Makefile.PL
 MANIFEST
+META.yml
 README
 t/00-load.t
 t/10-view.t
@@ -22,6 +23,9 @@ t/data/05-for.pod
 t/data/05-for.wiki
 t/data/06-begin-TODO.pod
 t/data/06-begin-TODO.wiki
+t/data/07-listslists-TODO.pod
+t/data/07-listslists-TODO.wiki
+t/data/10-manual-TODO.pod
+t/data/10-manual-TODO.wiki
 t/pod-coverage.t
 t/pod.t
-META.yml
